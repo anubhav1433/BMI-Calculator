@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" href="bmi.css" />
+    <title>BMI CALCULATOR</title>
+    <script>
+      window.onload = () => {
+        let button = document.querySelector("#btn");
+        button.addEventListener("click", calc);
+      };
+      function calc() {
+        let h = parseInt(document.querySelector("#height").value);
+        let w = parseInt(document.querySelector("#weight").value);
+        let r = document.querySelector("#result");
+        if (h === "" || w === "" || isNaN(h) || isNaN(w)) {
+          result.innerHTML = "PROVIDE CORRECT DETAILS";
+        } else {
+          let b = ((w * 10000) / (h * h)).toFixed(2);
+          if (b < 18.6) {
+            result.innerHTML = "UNDERWEIGHT:" + b;
+          } else if (b >= 18.6 && b <= 24.9) {
+            result.innerHTML = "NORMAL:" + b;
+          } else if (b >= 25 && b < 30) {
+            result.innerHTML = "OVERWEIGHT:" + b;
+          } else {
+            result.innerHTML = "OBESITY:" + b;
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="bmi">BMI CALCULATOR</h1>
+      <p class="height">ENTER YOUR HEIGHTS IN cm:</p>
+      <input type="text" id="height" placeholder="eg:180" />
+      <p class="weight">ENTER YOUR WEIGHT IN kg</p>
+      <input type="text" id="weight" placeholder="eg:45" /><br /><br /><br />
+      <button id="btn">CALCULATE</button><br><br>
+      <div id="result"></div>
+    </div>
+  </body>
+</html>
